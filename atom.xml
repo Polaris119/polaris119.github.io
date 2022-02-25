@@ -6,7 +6,7 @@
   <link href="http://polaris.github.io/atom.xml" rel="self"/>
   
   <link href="http://polaris.github.io/"/>
-  <updated>2022-02-24T12:29:12.852Z</updated>
+  <updated>2022-02-25T08:21:09.682Z</updated>
   <id>http://polaris.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【python单线程、多线程、协程】爬虫案例比较</title>
+    <link href="http://polaris.github.io/2022/02/25/python-dan-xian-cheng-duo-xian-cheng-xie-cheng-pa-chong-an-li-bi-jiao/"/>
+    <id>http://polaris.github.io/2022/02/25/python-dan-xian-cheng-duo-xian-cheng-xie-cheng-pa-chong-an-li-bi-jiao/</id>
+    <published>2022-02-25T08:04:11.000Z</published>
+    <updated>2022-02-25T08:21:09.682Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;爬取任务&quot;&gt;&lt;a href=&quot;#爬取任务&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="爬虫" scheme="http://polaris.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    <category term="多线程" scheme="http://polaris.github.io/categories/%E7%88%AC%E8%99%AB/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    <category term="协程" scheme="http://polaris.github.io/categories/%E7%88%AC%E8%99%AB/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%8D%8F%E7%A8%8B/"/>
+    
+    
+    <category term="爬虫" scheme="http://polaris.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+    <category term="多线程" scheme="http://polaris.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    <category term="协程" scheme="http://polaris.github.io/tags/%E5%8D%8F%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>【异步爬虫】学习笔记</title>
