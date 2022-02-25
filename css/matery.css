@@ -36,7 +36,7 @@
 body {
     background-color: #eaeaea;
     margin: 0;
-    color: #34495e;
+    color: #10cde6;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -206,6 +206,7 @@ kbd {
 b,
 strong {
     font-weight: bold;
+    color : #07eb7d
 }
 
 dfn {
@@ -240,8 +241,9 @@ mark {
     margin-bottom: 0;
 }
 
+/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #04bcd4 0%, #07eb7d 100%);
 }
 
 .text-color {
@@ -257,7 +259,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to right, #04bcd4 0%, #07eb7d 100%);
     opacity: 0.8;
 }
 
@@ -550,10 +552,11 @@ header .go-back i {
     height: 40vh !important;
 }
 
-.bg-cover:after {
+/*首页背景渐变*/
+/* .bg-cover:after {
     -webkit-animation: rainbow 60s infinite;
     animation: rainbow 60s infinite;
-}
+} */
 
 .bg-cover:before,
 .bg-cover:after {
@@ -2137,4 +2140,19 @@ footer .copy-right {
     height: 50px;
     padding: 0;
     margin: 0;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar-thumb {
+    background-color: #07eb7d;
+    background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.4) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.4) 75%,transparent 75%,transparent);
+    border-radius: 3em;
+}
+::-webkit-scrollbar-track {
+    background-color: #04bcd4;
+    border-radius: 3em;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    height: 15px;
 }

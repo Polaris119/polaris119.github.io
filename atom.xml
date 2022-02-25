@@ -6,7 +6,7 @@
   <link href="http://polaris.github.io/atom.xml" rel="self"/>
   
   <link href="http://polaris.github.io/"/>
-  <updated>2022-02-25T01:55:21.394Z</updated>
+  <updated>2022-02-24T12:29:12.852Z</updated>
   <id>http://polaris.github.io/</id>
   
   <author>
@@ -15,19 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://polaris.github.io/2022/02/25/index/"/>
-    <id>http://polaris.github.io/2022/02/25/index/</id>
-    <published>2022-02-25T01:55:21.394Z</published>
-    <updated>2022-02-25T01:55:21.394Z</updated>
-    
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>【异步爬虫】学习笔记</title>
@@ -55,6 +42,56 @@
     <category term="爬虫" scheme="http://polaris.github.io/tags/%E7%88%AC%E8%99%AB/"/>
     
     <category term="asyncio" scheme="http://polaris.github.io/tags/asyncio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【GitHub】学习笔记</title>
+    <link href="http://polaris.github.io/2022/02/19/github-xue-xi-bi-ji/"/>
+    <id>http://polaris.github.io/2022/02/19/github-xue-xi-bi-ji/</id>
+    <published>2022-02-19T12:23:08.000Z</published>
+    <updated>2022-02-19T12:40:24.118Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、GitHub初识&quot;&gt;&lt;a href=&quot;#一、GitHub初识&quot; class=&quot;headerlink&quot; title=&quot;一、GitHub初识&quot;&gt;&lt;/a&gt;一、GitHub初识&lt;/h1&gt;&lt;h2 id=&quot;1、创建仓库&quot;&gt;&lt;a href=&quot;#1、创建仓库&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="GitHub" scheme="http://polaris.github.io/categories/GitHub/"/>
+    
+    
+    <category term="GitHub" scheme="http://polaris.github.io/tags/GitHub/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【总结】大学四年来，用过的一些网站整理</title>
+    <link href="http://polaris.github.io/2022/02/15/zong-jie-da-xue-si-nian-lai-yong-guo-de-yi-xie-wang-zhan-zheng-li/"/>
+    <id>http://polaris.github.io/2022/02/15/zong-jie-da-xue-si-nian-lai-yong-guo-de-yi-xie-wang-zhan-zheng-li/</id>
+    <published>2022-02-15T07:32:56.000Z</published>
+    <updated>2022-02-19T07:50:09.108Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;💓前言&quot;&gt;&lt;a href=&quot;#💓前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="总结" scheme="http://polaris.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="总结" scheme="http://polaris.github.io/tags/%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
