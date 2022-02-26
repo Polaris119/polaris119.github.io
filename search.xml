@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【Chromedriver】下载、安装及配置</title>
+      <link href="/2022/02/26/chromedriver-xia-zai-an-zhuang-ji-pei-zhi/"/>
+      <url>/2022/02/26/chromedriver-xia-zai-an-zhuang-ji-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、查看Chrome-版本"><a href="#一、查看Chrome-版本" class="headerlink" title="一、查看Chrome 版本"></a>一、查看Chrome 版本</h2><p><img src="https://img-blog.csdnimg.cn/45f7da59774e43688ee3eea6bd8909ed.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/ea946ef42f674a2b91fae8c2858cb66e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"></p><h2 id="二、下载-ChromeDriver"><a href="#二、下载-ChromeDriver" class="headerlink" title="二、下载 ChromeDriver"></a>二、下载 ChromeDriver</h2><p>根据自己查到的版本到 ChromeDriver 镜像站下载对应的安装包，在不同平台下，可以下载不同的安装包。</p><p>镜像站链接如下：<br><a href="https://chromedriver.storage.googleapis.com/index.html">https://chromedriver.storage.googleapis.com/index.html</a></p><h2 id="三、安装selenium"><a href="#三、安装selenium" class="headerlink" title="三、安装selenium"></a>三、安装selenium</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> selenium<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="四、环境配置"><a href="#四、环境配置" class="headerlink" title="四、环境配置"></a>四、环境配置</h2><p>最<strong>简单粗暴</strong>的方法，将上述在镜像站下载的压缩包进行解压，将解压的<code>chromedriver.exe</code> 放到<code>Python</code> 的 <code>Scripts</code> 目录下。<br><img src="https://img-blog.csdnimg.cn/be2b5bc5cbf14587a8ab1e03376c2da5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"></p><h2 id="五、验证安装"><a href="#五、验证安装" class="headerlink" title="五、验证安装"></a>五、验证安装</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver<span class="token keyword">import</span> time<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>    driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.baidu.com'</span><span class="token punctuation">)</span>    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>    driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>运行之后，能看到百度页面，代表安装成功。（<strong>页面会在5s后关闭</strong>）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> selenium </category>
+          
+          <category> 爬虫 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 爬虫 </tag>
+            
+            <tag> selenium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【python单线程、多线程、协程】爬虫案例比较</title>
       <link href="/2022/02/25/python-dan-xian-cheng-duo-xian-cheng-xie-cheng-pa-chong-an-li-bi-jiao/"/>
       <url>/2022/02/25/python-dan-xian-cheng-duo-xian-cheng-xie-cheng-pa-chong-an-li-bi-jiao/</url>

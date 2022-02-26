@@ -6,7 +6,7 @@
   <link href="http://polaris.github.io/atom.xml" rel="self"/>
   
   <link href="http://polaris.github.io/"/>
-  <updated>2022-02-25T08:21:09.682Z</updated>
+  <updated>2022-02-26T13:58:50.004Z</updated>
   <id>http://polaris.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Chromedriver】下载、安装及配置</title>
+    <link href="http://polaris.github.io/2022/02/26/chromedriver-xia-zai-an-zhuang-ji-pei-zhi/"/>
+    <id>http://polaris.github.io/2022/02/26/chromedriver-xia-zai-an-zhuang-ji-pei-zhi/</id>
+    <published>2022-02-26T13:56:13.000Z</published>
+    <updated>2022-02-26T13:58:50.004Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、查看Chrome-版本&quot;&gt;&lt;a href=&quot;#一、查看Chrome-版本&quot; class=&quot;headerlink&quot; title=&quot;一、查看Chrome 版本&quot;&gt;&lt;/a&gt;一、查看Chrome 版本&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/categories/selenium/"/>
+    
+    <category term="爬虫" scheme="http://polaris.github.io/categories/selenium/%E7%88%AC%E8%99%AB/"/>
+    
+    
+    <category term="爬虫" scheme="http://polaris.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+    <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
+    
+  </entry>
   
   <entry>
     <title>【python单线程、多线程、协程】爬虫案例比较</title>
