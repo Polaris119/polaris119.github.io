@@ -6,7 +6,7 @@
   <link href="http://polaris.github.io/atom.xml" rel="self"/>
   
   <link href="http://polaris.github.io/"/>
-  <updated>2022-02-26T13:58:50.004Z</updated>
+  <updated>2022-02-27T08:46:22.030Z</updated>
   <id>http://polaris.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://polaris.github.io/2022/02/26/chromedriver-xia-zai-an-zhuang-ji-pei-zhi/"/>
     <id>http://polaris.github.io/2022/02/26/chromedriver-xia-zai-an-zhuang-ji-pei-zhi/</id>
     <published>2022-02-26T13:56:13.000Z</published>
-    <updated>2022-02-26T13:58:50.004Z</updated>
+    <updated>2022-02-27T08:46:22.030Z</updated>
     
     
       
@@ -36,10 +36,6 @@
     
     <category term="selenium" scheme="http://polaris.github.io/categories/selenium/"/>
     
-    <category term="爬虫" scheme="http://polaris.github.io/categories/selenium/%E7%88%AC%E8%99%AB/"/>
-    
-    
-    <category term="爬虫" scheme="http://polaris.github.io/tags/%E7%88%AC%E8%99%AB/"/>
     
     <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
     
