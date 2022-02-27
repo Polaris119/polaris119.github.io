@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【总结】大学四年来，用过的一些网站整理, Polaris119温暖的小窝">
+    <meta name="keywords" content="【selenium】浏览器控制方法, Polaris119温暖的小窝">
     <meta name="description" content="不定期更新自己的笔记和学习经历">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【总结】大学四年来，用过的一些网站整理 | Polaris119温暖的小窝</title>
+    <title>【selenium】浏览器控制方法 | Polaris119温暖的小窝</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【总结】大学四年来，用过的一些网站整理</h1>
+                    <h1 class="description center-align post-title">【selenium】浏览器控制方法</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +434,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%80%BB%E7%BB%93/">
-                                <span class="chip bg-color">总结</span>
+                            <a href="/tags/selenium/">
+                                <span class="chip bg-color">selenium</span>
                             </a>
                         
                     </div>
@@ -446,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                总结
+                            <a href="/categories/selenium/" class="post-category">
+                                selenium
                             </a>
                         
                     </div>
@@ -459,28 +459,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-02-15
+                    2022-02-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-02-19
+                    2022-02-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.1k
+                    444
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    4 Min
+                    1 Min
                 </div>
                 
 
@@ -503,107 +503,111 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="💓前言"><a href="#💓前言" class="headerlink" title="💓前言"></a>💓前言</h2><ul>
-<li><strong>1、电脑在大学四年生涯中，刷机一次，由于第一次刷机，备份没有很完全，丢掉了一些用的次数比较少的网站。</strong></li>
-<li><strong>2、序号并非排名</strong></li>
-<li><strong>3、本文不是任何平台或软件的广告！！！</strong></li>
+                <h2 id="一、修改浏览器窗口的大小"><a href="#一、修改浏览器窗口的大小" class="headerlink" title="一、修改浏览器窗口的大小"></a>一、修改浏览器窗口的大小</h2><ul>
+<li><code>set_window_size()</code>可修改浏览器窗口的大小。</li>
+<li><code>maximize_window()</code>方法可以将浏览器<code>最大化</code>。<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">import</span> time
+
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 访问百度</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://baidu.com'</span><span class="token punctuation">)</span>
+<span class="token comment"># 等待3秒</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 设置浏览器的宽高分别为：400x600</span>
+driver<span class="token punctuation">.</span>set_window_size<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span>
+<span class="token comment"># 等待3秒</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 设置浏览器为全屏</span>
+driver<span class="token punctuation">.</span>maximize_window<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 等待3秒</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 关闭所有页面</span>
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二、浏览器的刷新、后退、前进"><a href="#二、浏览器的刷新、后退、前进" class="headerlink" title="二、浏览器的刷新、后退、前进"></a>二、浏览器的刷新、后退、前进</h2></li>
+<li><code>refresh()</code> 方法可以实现页面<code>刷新</code>。</li>
+<li><code>back()</code>方法可以实现页面的<code>后退</code>。</li>
+<li><code>forward()</code>方法可以实现页面的<code>前进</code>。</li>
 </ul>
-<h2 id="📖一、学习平台"><a href="#📖一、学习平台" class="headerlink" title="📖一、学习平台"></a>📖一、学习平台</h2><p><strong>1、中国大学MOOC（慕课）</strong></p>
-<p><strong><code>好的大学，没有围墙 </code></strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.icourse163.org/">https://www.icourse163.org/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/3965a2c7febc4b0b9df00af0e940f946.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>到了大学，老师告知的第一个学习网站，不仅可以看到中国各所学校开设的一些课程，也常被老师用于辅助讲课。尤其是疫情期间，想必很大人都被老师安利过吧！</p>
-<p><strong>2、哔哩哔哩（B站）</strong></p>
-<p><strong><code>B站大学，不是浪得虚名的</code></strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/">https://www.bilibili.com/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/415fec6a134f481688cde3724cdfef2b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>平时，B站作为休闲娱乐平台，但是到了期末复习周时，便化身为学习神器，挽救万千学子于水火之中（<del>突击学习，防挂科</del> ）</p>
-<p><strong>3、菜鸟教程</strong></p>
-<p><strong><code>菜鸟教程，不是菜鸟驿站哦~</code></strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/">https://www.runoob.com/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/dba53f15b9944177bf446acdb357e629.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>初学编程，常常在百度中见到的网站</p>
-<p><strong>4、Github</strong></p>
-<p><strong><code>课设的cv神器</code></strong></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/df7ac2a2034649b2b0bbd4b136f3230d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>有了github，妈妈再也不用担心我的课设啦。</p>
-<p>但有时候，GitHub会进不去，有人测试过，妹15分钟，可以进入5分钟。</p>
-<p>因此，在需要时，我可能会选择科学上网。</p>
-<p><strong>5、CSDN</strong></p>
-<p><strong><code>咱们的C站也是很行的</code></strong></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44921056">https://blog.csdn.net/qq_44921056</a><br><img src="https://img-blog.csdnimg.cn/f57ee5a6f3434be8bcdcef084f3ddef5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>你都看到这篇文章了，就不要多介绍了吧~</p>
-<p><strong>6、博客园</strong></p>
-<p><code>CSDN已经出现了，博客园还会远吗？</code></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/">https://www.cnblogs.com/</a><br><img src="https://img-blog.csdnimg.cn/2ed798df693c4dc4872613b3ddfd2fce.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>有时候，经常在CSDN、博客园、掘金之间反复横跳</p>
-<p><strong>7、掘金</strong></p>
-<p><code>书中自有黄金屋</code></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/">https://juejin.cn/</a><br><img src="https://img-blog.csdnimg.cn/3b0a68ea3c6b4128aa165b1428a09b87.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>代码不止，掘金不停！</p>
-<p><strong>8、知乎</strong></p>
-<p><strong><code>虽然不如前几年，但也能淘到有用的知识</code></strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/">https://www.zhihu.com/</a><br><img src="https://img-blog.csdnimg.cn/386d35f9f8c948f1b4d02396e3480142.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>有些同学，刷知乎如刷抖音一般，知识面还是很广的，空闲时间可以看一看。</p>
-<p><strong>9、力扣（LeetCode）</strong></p>
-<p><code>刷题玩家狂喜</code></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/">https://leetcode-cn.com/</a><br><img src="https://img-blog.csdnimg.cn/342ca7306a7d48498bf13a34b4017e4e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>少年，渴望力量吗？</p>
-<p>来力扣刷题吧！</p>
-<p>菜鸟到大牛的必经之路。</p>
-<p><strong>10、w3school</strong></p>
-<p><code>全球最大的中文Web技术教程</code></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/">https://www.w3school.com.cn/</a><br><img src="https://img-blog.csdnimg.cn/942cb83b586745ebbb4e91c7c92bcfbc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p>免费的图文教程网站，就问你要不要吧？（<del>doge</del> ）</p>
-<p><strong>11、易百教程</strong></p>
-<p><code>用的比较少，不作评价</code></p>
-<p><a target="_blank" rel="noopener" href="https://www.yiibai.com/">https://www.yiibai.com/</a><br><img src="https://img-blog.csdnimg.cn/15eed23de6c4448f88cb567738390367.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>12、网易云课堂</p>
-<p><code>编程频道</code></p>
-<p><a target="_blank" rel="noopener" href="https://study.163.com/category/480000003131009">https://study.163.com/category/480000003131009</a></p>
-<p><img src="https://img-blog.csdnimg.cn/2975f14f980045a6be3ff593cbe5568c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>收费，可根据自己实际情况而定。</p>
-<p><strong>13、拉钩教育</strong></p>
-<p><code>拉钩上吊一百年不许变</code></p>
-<p><a target="_blank" rel="noopener" href="https://kaiwu.lagou.com/">https://kaiwu.lagou.com/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/6970d1a6be6247b9bdc060aec50fb732.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>部分免费，部分收费。可以根据自己实际情况而定。</p>
-<p><strong>14、Spring Cloud中文导航&amp;Spring Boot中文导航</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">import</span> time
+
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 访问百度</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://baidu.com'</span><span class="token punctuation">)</span>
+<span class="token comment"># 等待3秒</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 刷新页面</span>
+driver<span class="token punctuation">.</span>refresh<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 等待3秒</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 访问博主的CSDN个人主页</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://blog.csdn.net/qq_44921056'</span><span class="token punctuation">)</span>
+<span class="token comment"># 等待3秒</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 页面后退</span>
+driver<span class="token punctuation">.</span>back<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 等待3秒</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 页面前进</span>
+driver<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment"># 关闭所有页面</span>
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="三、浏览器窗口切换"><a href="#三、浏览器窗口切换" class="headerlink" title="三、浏览器窗口切换"></a>三、浏览器窗口切换</h2><ul>
+<li>打开多个窗口，需要定位到新打开的窗口</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 获取打开的多个窗口句柄</span>
+windows <span class="token operator">=</span> driver<span class="token punctuation">.</span>window_handles
+<span class="token comment"># 切换到当前最新打开的窗口</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>window<span class="token punctuation">(</span>windows<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><p><strong>Spring Cloud中文导航：<a target="_blank" rel="noopener" href="http://springcloud.fun/">http://springcloud.fun/</a></strong><br><img src="https://img-blog.csdnimg.cn/152fcd23a35f45ef8719cc0a3651010f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-</li>
-<li><p><strong>Spring Boot中文导航：<a target="_blank" rel="noopener" href="http://springboot.fun/">http://springboot.fun/</a></strong><br><img src="https://img-blog.csdnimg.cn/e54eb2af3eb84f58b26aa39a6572638e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>从大佬文章中了解的网站，还没用过，先码住！</p>
-</li>
+<li>打开两个窗口，需要定位到新的窗口</li>
 </ul>
-<p><strong>15、百度网盘</strong></p>
-<p><code>万物皆可白嫖</code></p>
-<p><a target="_blank" rel="noopener" href="https://pan.baidu.com/">https://pan.baidu.com/</a><br><img src="https://img-blog.csdnimg.cn/5194f71c47d14c7497e1fb4ed36bdc69.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>差点把这个给忘了，用过都说好，就是下载速度比较慢，可以选择VIP服务，哦不，SVIP服务或者用科学方法。</p>
-<h2 id="💻二、办公平台"><a href="#💻二、办公平台" class="headerlink" title="💻二、办公平台"></a>💻二、办公平台</h2><p>到了大学，会接触各种各样的办公软件，这里分享部分。</p>
-<p><strong>1、金山文档</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.kdocs.cn/">https://www.kdocs.cn/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/c311e90cf7664ceca0892b1b73feb2da.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>2、石墨文档</strong></p>
-<p><a target="_blank" rel="noopener" href="https://shimo.im/">https://shimo.im/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/26f981d476dc42848e1a7bbafb202948.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>3、微云文档</strong></p>
-<p><a target="_blank" rel="noopener" href="https://doc.weiyun.com/">https://doc.weiyun.com/</a><br><img src="https://img-blog.csdnimg.cn/8dd23da832d54333bbfdce28e52681b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>4、问卷星</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.wjx.cn/">https://www.wjx.cn/</a><br><img src="https://img-blog.csdnimg.cn/34a300534d544929a1512683e7628ed5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>写到这个，社恐的我又开始害怕了。</p>
-<p>做过毛概，马原的课设都知道。</p>
-<p><strong>5、有道云笔记</strong></p>
-<p><a target="_blank" rel="noopener" href="https://note.youdao.com/?auto=1">https://note.youdao.com/?auto=1</a><br><img src="https://img-blog.csdnimg.cn/ca6849d0e9654ab28699be8d0c2343f9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>6、图表秀</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.tubiaoxiu.com/">https://www.tubiaoxiu.com/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/b9e1e012cc3d40b79a358c28915b1427.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>精美图表向你招手~</p>
-<p><strong>7、其它</strong></p>
-<p>office、wps、一些流程图软件等等，有很多，需要的时候，自己百度就知道了。</p>
-<h2 id="💼三、资源平台"><a href="#💼三、资源平台" class="headerlink" title="💼三、资源平台"></a>💼三、资源平台</h2><p><strong>1、优品PPT</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.ypppt.com/">https://www.ypppt.com/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/d418d1db13f6486f898e97069c584153.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>2、PPT宝藏</p>
-<p><a target="_blank" rel="noopener" href="http://www.pptbz.com/">http://www.pptbz.com/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/6e8662a245564cebb6cef6ab87c26505.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>3、脚本之家（电子书）</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.jb51.net/books/">https://www.jb51.net/books/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/72757f941b944bb9b5a93ce6380df63a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>4、书籍知识库</strong></p>
-<p><a target="_blank" rel="noopener" href="https://book.zhishikoo.com/">https://book.zhishikoo.com/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/db06761c619049e3b13f5cb690841e70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>5、数学应用</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.geogebra.org/">https://www.geogebra.org/</a><br><img src="https://img-blog.csdnimg.cn/c7464f490fb94784b3ab47a110875cc5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>6、ico图标制作</strong></p>
-<p><a target="_blank" rel="noopener" href="http://www.ico51.cn/">http://www.ico51.cn/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/e770752e2057439490cd35f0258cd38f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>7、硕鼠</strong></p>
-<p><code>最稳定的视频下载平台</code></p>
-<p><a target="_blank" rel="noopener" href="https://www.flvcd.com/index.htm">https://www.flvcd.com/index.htm</a><br><img src="https://img-blog.csdnimg.cn/069f2120eaf243db975480016816d99f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>8、术语大全</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.termonline.cn/index">https://www.termonline.cn/index</a></p>
-<p><img src="https://img-blog.csdnimg.cn/68ff2aa533164eccb19772ab5550b0aa.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>9、代码转换工具</strong></p>
-<p><a target="_blank" rel="noopener" href="https://carbon.now.sh/">https://carbon.now.sh/</a></p>
-<p><img src="https://img-blog.csdnimg.cn/c81c83ac691c4bf4b866cd01d2059318.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>10、Deepl翻译</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.deepl.com/translator">https://www.deepl.com/translator</a><br><img src="https://img-blog.csdnimg.cn/d8699fd6adf5467f934071110411be2c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><strong>11、微信公众号</strong></p>
-<p>一些公众号真的很nice，自己取寻找吧！</p>
-<hr>
-<p>本文如果对你有帮助，记得点个赞👍哟，也是对作者最大的鼓励🙇‍♂️。<br>如有不足之处可以在评论区👇多多指正，我会在看到的第一时间进行修正</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 获得打开的第一个窗口句柄</span>
+window_1 <span class="token operator">=</span> driver<span class="token punctuation">.</span>current_window_handle
+<span class="token comment"># 获得打开的所有的窗口句柄</span>
+windows <span class="token operator">=</span> driver<span class="token punctuation">.</span>window_handles
+<span class="token comment"># 切换到最新的窗口</span>
+<span class="token keyword">for</span> current_window <span class="token keyword">in</span> windows<span class="token punctuation">:</span>
+ <span class="token keyword">if</span> current_window <span class="token operator">!=</span> window_1<span class="token punctuation">:</span>
+  driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>window<span class="token punctuation">(</span>current_window<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="四、其它操作"><a href="#四、其它操作" class="headerlink" title="四、其它操作"></a>四、其它操作</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>send_keys()</td>
+<td>模拟按键输入</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清除文本内容</td>
+</tr>
+<tr>
+<td>size</td>
+<td>获取元素尺寸</td>
+</tr>
+<tr>
+<td>text</td>
+<td>获取元素的文本</td>
+</tr>
+<tr>
+<td>get_attribute()</td>
+<td>获取元素属性值</td>
+</tr>
+<tr>
+<td>is_displayed()</td>
+<td>设置该元素用户是否可见</td>
+</tr>
+<tr>
+<td><strong>这部分实例要结合下一节内容，下一节进行演示。</strong></td>
+<td></td>
+</tr>
+</tbody></table>
 
                 
             </div>
@@ -630,7 +634,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://polaris.github.io/2022/02/15/zong-jie-da-xue-si-nian-lai-yong-guo-de-yi-xie-wang-zhan-zheng-li/">http://polaris.github.io/2022/02/15/zong-jie-da-xue-si-nian-lai-yong-guo-de-yi-xie-wang-zhan-zheng-li/</a>
+                    <a href="http://polaris.github.io/2022/02/27/selenium-liu-lan-qi-kong-zhi-fang-fa/">http://polaris.github.io/2022/02/27/selenium-liu-lan-qi-kong-zhi-fang-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -668,8 +672,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%80%BB%E7%BB%93/">
-                                    <span class="chip bg-color">总结</span>
+                                <a href="/tags/selenium/">
+                                    <span class="chip bg-color">selenium</span>
                                 </a>
                             
                         </div>
@@ -1106,13 +1110,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/02/19/github-xue-xi-bi-ji/">
+                <a href="/2022/02/27/selenium-ding-wei-ye-mian-yuan-su/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【GitHub】学习笔记">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="【selenium】定位页面元素">
                         
-                        <span class="card-title">【GitHub】学习笔记</span>
+                        <span class="card-title">【selenium】定位页面元素</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1123,14 +1127,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-27
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/GitHub/" class="post-category">
-                                    GitHub
+                            <a href="/categories/selenium/" class="post-category">
+                                    selenium
                                 </a>
                             
                             
@@ -1140,8 +1144,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/GitHub/">
-                        <span class="chip bg-color">GitHub</span>
+                    <a href="/tags/selenium/">
+                        <span class="chip bg-color">selenium</span>
                     </a>
                     
                 </div>
@@ -1152,16 +1156,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/15/zong-jie-da-xue-si-nian-lai-yong-guo-de-yi-xie-wang-zhan-zheng-li/">
+                <a href="/2022/02/26/chromedriver-xia-zai-an-zhuang-ji-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【总结】大学四年来，用过的一些网站整理">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="【Chromedriver】下载、安装及配置">
                         
-                        <span class="card-title">【总结】大学四年来，用过的一些网站整理</span>
+                        <span class="card-title">【Chromedriver】下载、安装及配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1172,26 +1176,25 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                    总结
+                            <a href="/categories/selenium/" class="post-category">
+                                    selenium
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%80%BB%E7%BB%93/">
-                        <span class="chip bg-color">总结</span>
+                    <a href="/tags/selenium/">
+                        <span class="chip bg-color">selenium</span>
                     </a>
                     
                 </div>

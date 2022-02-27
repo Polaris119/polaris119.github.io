@@ -6,7 +6,7 @@
   <link href="http://polaris.github.io/atom.xml" rel="self"/>
   
   <link href="http://polaris.github.io/"/>
-  <updated>2022-02-27T08:46:22.030Z</updated>
+  <updated>2022-02-27T11:04:54.532Z</updated>
   <id>http://polaris.github.io/</id>
   
   <author>
@@ -15,6 +15,82 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【selenium】鼠标控制和键盘控制</title>
+    <link href="http://polaris.github.io/2022/02/27/selenium-shu-biao-kong-zhi-he-jian-pan-kong-zhi/"/>
+    <id>http://polaris.github.io/2022/02/27/selenium-shu-biao-kong-zhi-he-jian-pan-kong-zhi/</id>
+    <published>2022-02-27T08:48:14.000Z</published>
+    <updated>2022-02-27T11:04:54.532Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、鼠标控制&quot;&gt;&lt;a href=&quot;#一、鼠标控制&quot; class=&quot;headerlink&quot; title=&quot;一、鼠标控制&quot;&gt;&lt;/a&gt;一、鼠标控制&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;需要先导入：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/categories/selenium/"/>
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【selenium】定位页面元素</title>
+    <link href="http://polaris.github.io/2022/02/27/selenium-ding-wei-ye-mian-yuan-su/"/>
+    <id>http://polaris.github.io/2022/02/27/selenium-ding-wei-ye-mian-yuan-su/</id>
+    <published>2022-02-27T08:46:45.000Z</published>
+    <updated>2022-02-27T11:04:34.033Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、已被废弃的用法&quot;&gt;&lt;a href=&quot;#一、已被废弃的用法&quot; class=&quot;headerlink&quot; title=&quot;一、已被废弃的用法&quot;&gt;&lt;/a&gt;一、已被废弃的用法&lt;/h2&gt;&lt;h3 id=&quot;1、根据id定位&quot;&gt;&lt;a href=&quot;#1、根据id定位&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/categories/selenium/"/>
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【selenium】浏览器控制方法</title>
+    <link href="http://polaris.github.io/2022/02/27/selenium-liu-lan-qi-kong-zhi-fang-fa/"/>
+    <id>http://polaris.github.io/2022/02/27/selenium-liu-lan-qi-kong-zhi-fang-fa/</id>
+    <published>2022-02-27T08:44:30.000Z</published>
+    <updated>2022-02-27T11:04:45.569Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、修改浏览器窗口的大小&quot;&gt;&lt;a href=&quot;#一、修改浏览器窗口的大小&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/categories/selenium/"/>
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
+    
+  </entry>
   
   <entry>
     <title>【Chromedriver】下载、安装及配置</title>
