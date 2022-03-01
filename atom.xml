@@ -6,7 +6,7 @@
   <link href="http://polaris.github.io/atom.xml" rel="self"/>
   
   <link href="http://polaris.github.io/"/>
-  <updated>2022-02-27T11:55:25.348Z</updated>
+  <updated>2022-03-01T09:23:49.307Z</updated>
   <id>http://polaris.github.io/</id>
   
   <author>
@@ -15,6 +15,101 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【selenium】表单切换与弹窗问题</title>
+    <link href="http://polaris.github.io/2022/03/01/selenium-biao-dan-qie-huan-yu-dan-chuang-wen-ti/"/>
+    <id>http://polaris.github.io/2022/03/01/selenium-biao-dan-qie-huan-yu-dan-chuang-wen-ti/</id>
+    <published>2022-03-01T09:20:07.000Z</published>
+    <updated>2022-03-01T09:23:49.307Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、表单切换&quot;&gt;&lt;a href=&quot;#一、表单切换&quot; class=&quot;headerlink&quot; title=&quot;一、表单切换&quot;&gt;&lt;/a&gt;一、表单切换&lt;/h2&gt;&lt;p&gt;在前面的篇章中，有讲过&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【selenium】下拉滚动条</title>
+    <link href="http://polaris.github.io/2022/03/01/selenium-xia-la-gun-dong-tiao/"/>
+    <id>http://polaris.github.io/2022/03/01/selenium-xia-la-gun-dong-tiao/</id>
+    <published>2022-03-01T09:19:51.000Z</published>
+    <updated>2022-03-01T09:23:53.210Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;selenium下拉滚动条的三种方法&quot;&gt;&lt;a href=&quot;#selenium下拉滚动条的三种方法&quot; class=&quot;headerlink&quot; title=&quot;selenium下拉滚动条的三种方法&quot;&gt;&lt;/a&gt;selenium下拉滚动条的三种方法&lt;/h1&gt;&lt;h3</summary>
+        
+      
+    
+    
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【selenium】反屏蔽方法</title>
+    <link href="http://polaris.github.io/2022/03/01/selenium-fan-ping-bi-fang-fa/"/>
+    <id>http://polaris.github.io/2022/03/01/selenium-fan-ping-bi-fang-fa/</id>
+    <published>2022-03-01T09:19:39.000Z</published>
+    <updated>2022-03-01T09:23:51.581Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一般来讲，使用selenium访问某个网址（浏览器以Chrome为例），都会有&lt;code&gt;Chrome正受到自动测试软件的控制&lt;/code&gt;的提示&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;以百度为例&lt;/strong&gt;：&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【selenium】下载文件]</title>
+    <link href="http://polaris.github.io/2022/03/01/selenium-xia-zai-wen-jian/"/>
+    <id>http://polaris.github.io/2022/03/01/selenium-xia-zai-wen-jian/</id>
+    <published>2022-03-01T09:19:16.000Z</published>
+    <updated>2022-03-01T09:23:55.109Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Chrome浏览器实现文件下载，需要通过 &lt;code&gt;add_experimental_option&lt;/code&gt; 添加 &lt;code&gt;prefs&lt;/code&gt; 参数。&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-python&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="selenium" scheme="http://polaris.github.io/tags/selenium/"/>
+    
+  </entry>
   
   <entry>
     <title>【selenium】设置元素等待</title>
