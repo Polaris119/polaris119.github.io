@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【selenium】下载文件], Polaris119温暖的小窝">
+    <meta name="keywords" content="【selenium爬虫实例一】网易云歌单封面图片, Polaris119温暖的小窝">
     <meta name="description" content="不定期更新自己的笔记和学习经历">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【selenium】下载文件] | Polaris119温暖的小窝</title>
+    <title>【selenium爬虫实例一】网易云歌单封面图片 | Polaris119温暖的小窝</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【selenium】下载文件]</h1>
+                    <h1 class="description center-align post-title">【selenium爬虫实例一】网易云歌单封面图片</h1>
                 </div>
             </div>
         </div>
@@ -434,6 +434,10 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/%E7%88%AC%E8%99%AB/">
+                                <span class="chip bg-color">爬虫</span>
+                            </a>
+                        
                             <a href="/tags/selenium/">
                                 <span class="chip bg-color">selenium</span>
                             </a>
@@ -443,6 +447,19 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/selenium/" class="post-category">
+                                selenium
+                            </a>
+                        
+                            <a href="/categories/selenium/%E7%88%AC%E8%99%AB/" class="post-category">
+                                爬虫
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -450,28 +467,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-03-01
+                    2022-03-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-03-01
+                    2022-03-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    44
+                    737
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    3 Min
                 </div>
                 
 
@@ -494,14 +511,95 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Chrome浏览器实现文件下载，需要通过 <code>add_experimental_option</code> 添加 <code>prefs</code> 参数。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">prefs <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'profile.default_content_settings.popups'</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    <span class="token string">'download.default_directory'</span><span class="token punctuation">:</span> <span class="token string">'此处填下载路径'</span>
-<span class="token punctuation">}</span>
+                <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p><strong>本文仅用于交流学习，不得用于商业行为</strong></p>
+<p>如果单纯的使用requests库，是不能获取到完整的源代码的；</p>
+<p>如果想进行分析的话，刷新获取数据，则会出现这样的界面：<br><img src="https://img-blog.csdnimg.cn/67494b7804e1451c8bd1d74ef0599659.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>因此，选择使用selenium是非常好的一个选择！</p>
+<h2 id="二、selenium获取数据"><a href="#二、selenium获取数据" class="headerlink" title="二、selenium获取数据"></a>二、selenium获取数据</h2><p><strong>以歌单广场的一页为例，获取到歌单的封面</strong><br><img src="https://img-blog.csdnimg.cn/bffdd19f8ec54302817e7e7ce4203553.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p>这里使用两个方法：</p>
+<ol>
+<li>使用selenium获取到网页源代码，然后使用pyquery库进行解析，从而获取数据</li>
+<li>直接使用selenium获取数据，利用selenium的页面元素定位</li>
+</ol>
+<h4 id="1、第一种方法"><a href="#1、第一种方法" class="headerlink" title="1、第一种方法"></a>1、第一种方法</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options
+<span class="token keyword">from</span> pyquery <span class="token keyword">import</span> PyQuery <span class="token keyword">as</span> pq
+<span class="token keyword">import</span> time
 
-<span class="token comment">## profile.default_content_settings.popups：0 禁止弹出窗口。</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 配置</span>
+option <span class="token operator">=</span> Options<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 为Chrome配置无头模式</span>
+option<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">"--headless"</span><span class="token punctuation">)</span>
+<span class="token comment"># 启动浏览器时加入配置</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>options<span class="token operator">=</span>option<span class="token punctuation">)</span>
+<span class="token comment"># 访问网页</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://music.163.com/#/discover/playlist/?order=hot&amp;cat=%E5%85%A8%E9%83%A8&amp;limit=35&amp;offset=35'</span><span class="token punctuation">)</span>
+<span class="token comment"># 切换到iframe表单</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>frame<span class="token punctuation">(</span><span class="token string">'g_iframe'</span><span class="token punctuation">)</span>
+<span class="token comment"># 获取源代码</span>
+html <span class="token operator">=</span> driver<span class="token punctuation">.</span>execute_script<span class="token punctuation">(</span><span class="token string">'return document.documentElement.outerHTML'</span><span class="token punctuation">)</span>
+<span class="token comment"># 利用pyquery库进行解析</span>
+doc <span class="token operator">=</span> pq<span class="token punctuation">(</span>html<span class="token punctuation">)</span>
+<span class="token comment"># 定位到所有含有封面图片链接的节点</span>
+links <span class="token operator">=</span> doc<span class="token punctuation">(</span><span class="token string">'#m-pl-container li div img'</span><span class="token punctuation">)</span>
+<span class="token comment"># 打印封面图片链接数量</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"该页面含有</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">len</span><span class="token punctuation">(</span>links<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">张图片"</span></span><span class="token punctuation">)</span>
+<span class="token comment"># 进行遍历</span>
+<span class="token keyword">for</span> link <span class="token keyword">in</span> links<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 获取封面图片链接</span>
+    src <span class="token operator">=</span> link<span class="token punctuation">.</span>attr<span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">)</span>
+    <span class="token comment"># 打印链接</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span>
+<span class="token comment"># 关闭所有页面</span>
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"总共用时：{}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>输出结果：</strong><br>图片链接过多，仅展示部分结果<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">该页面含有35张图片
+http://p2.music.126.net/DHRO3u68N0HbSF_Is08S6A<span class="token operator">==</span>/109951166538173595.jpg?param<span class="token operator">=</span>140y140
+http://p2.music.126.net/FkcsntKQ2JgvJZktcJ0uPw<span class="token operator">==</span>/109951166647447993.jpg?param<span class="token operator">=</span>140y140
+http://p2.music.126.net/9ROYGXi0iJyY97bgbdEDSg<span class="token operator">==</span>/109951166741042192.jpg?param<span class="token operator">=</span>140y140
+总共用时：5.121241807937622<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2、第二种方法"><a href="#2、第二种方法" class="headerlink" title="2、第二种方法"></a>2、第二种方法</h4></li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
+<span class="token keyword">import</span> time
+
+start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 配置</span>
+option <span class="token operator">=</span> Options<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 为Chrome配置无头模式</span>
+option<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">"--headless"</span><span class="token punctuation">)</span>
+<span class="token comment"># 启动浏览器时加入配置</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>options<span class="token operator">=</span>option<span class="token punctuation">)</span>
+<span class="token comment"># 访问网页</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://music.163.com/#/discover/playlist/?order=hot&amp;cat=%E5%85%A8%E9%83%A8&amp;limit=35&amp;offset=35'</span><span class="token punctuation">)</span>
+<span class="token comment"># 切换到iframe表单</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>frame<span class="token punctuation">(</span><span class="token string">'g_iframe'</span><span class="token punctuation">)</span>
+<span class="token comment"># 定位到所有含有封面图片链接的节点</span>
+links <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_elements<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">'#m-pl-container .j-flag'</span><span class="token punctuation">)</span>
+<span class="token comment"># 打印封面图片链接数量</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"该页面含有</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">len</span><span class="token punctuation">(</span>links<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">张图片"</span></span><span class="token punctuation">)</span>
+<span class="token comment"># 进行遍历</span>
+<span class="token keyword">for</span> element <span class="token keyword">in</span> links<span class="token punctuation">:</span>
+    <span class="token comment"># 打印封面图片链接</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>get_attribute<span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 关闭所有页面</span>
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"总共用时：{}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>输出结果：</strong><br>图片链接过多，仅展示部分结果<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">该页面含有35张图片
+http://p2.music.126.net/DHRO3u68N0HbSF_Is08S6A<span class="token operator">==</span>/109951166538173595.jpg?param<span class="token operator">=</span>140y140
+http://p2.music.126.net/FkcsntKQ2JgvJZktcJ0uPw<span class="token operator">==</span>/109951166647447993.jpg?param<span class="token operator">=</span>140y140
+http://p2.music.126.net/9ROYGXi0iJyY97bgbdEDSg<span class="token operator">==</span>/109951166741042192.jpg?param<span class="token operator">=</span>140y140
+http://p2.music.126.net/fkZa3CIMPpwv45MwjaGtVQ<span class="token operator">==</span>/109951166623085189.jpg?param<span class="token operator">=</span>140y140
+总共用时：5.274672031402588<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h4>这两种方法进行比较，就速度而言，第一种方法略快。</li>
+</ul>
+<p>且第一种方法更适合喜欢通过页面源代码进行获取数据的小伙伴。</p>
 
                 
             </div>
@@ -528,7 +626,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://polaris.github.io/2022/03/01/selenium-xia-zai-wen-jian/">http://polaris.github.io/2022/03/01/selenium-xia-zai-wen-jian/</a>
+                    <a href="http://polaris.github.io/2022/03/04/selenium-pa-chong-shi-li-yi-wang-yi-yun-ge-dan-feng-mian-tu-pian/">http://polaris.github.io/2022/03/04/selenium-pa-chong-shi-li-yi-wang-yi-yun-ge-dan-feng-mian-tu-pian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -565,6 +663,10 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
+                            
+                                <a href="/tags/%E7%88%AC%E8%99%AB/">
+                                    <span class="chip bg-color">爬虫</span>
+                                </a>
                             
                                 <a href="/tags/selenium/">
                                     <span class="chip bg-color">selenium</span>
@@ -1000,39 +1102,53 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/03/01/selenium-fan-ping-bi-fang-fa/">
+                <a href="/2022/03/04/selenium-pa-chong-shi-li-yi-wang-yi-yun-ge-dan-feng-mian-tu-pian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【selenium】反屏蔽方法">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="【selenium爬虫实例一】网易云歌单封面图片">
                         
-                        <span class="card-title">【selenium】反屏蔽方法</span>
+                        <span class="card-title">【selenium爬虫实例一】网易云歌单封面图片</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            selenium
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-04
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Polaris119
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/selenium/" class="post-category">
+                                    selenium
+                                </a>
+                            
+                            <a href="/categories/selenium/%E7%88%AC%E8%99%AB/" class="post-category">
+                                    爬虫
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
                     
                     <a href="/tags/selenium/">
                         <span class="chip bg-color">selenium</span>
@@ -1049,33 +1165,29 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/27/selenium-she-zhi-yuan-su-deng-dai/">
+                <a href="/2022/03/04/selenium-guan-yu-cookie-de-cao-zuo-he-wu-tou-mo-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="【selenium】设置元素等待">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="【selenium】关于cookie的操作和无头模式">
                         
-                        <span class="card-title">【selenium】设置元素等待</span>
+                        <span class="card-title">【selenium】关于cookie的操作和无头模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            selenium
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-04
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/selenium/" class="post-category">
-                                    selenium
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Polaris119
                             
                         </span>
                     </div>

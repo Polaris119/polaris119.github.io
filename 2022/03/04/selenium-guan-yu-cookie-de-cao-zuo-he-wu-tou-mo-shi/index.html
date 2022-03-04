@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【selenium】下载文件], Polaris119温暖的小窝">
+    <meta name="keywords" content="【selenium】关于cookie的操作和无头模式, Polaris119温暖的小窝">
     <meta name="description" content="不定期更新自己的笔记和学习经历">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【selenium】下载文件] | Polaris119温暖的小窝</title>
+    <title>【selenium】关于cookie的操作和无头模式 | Polaris119温暖的小窝</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【selenium】下载文件]</h1>
+                    <h1 class="description center-align post-title">【selenium】关于cookie的操作和无头模式</h1>
                 </div>
             </div>
         </div>
@@ -450,21 +450,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-03-01
+                    2022-03-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-03-01
+                    2022-03-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    44
+                    159
                 </div>
                 
 
@@ -494,14 +494,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Chrome浏览器实现文件下载，需要通过 <code>add_experimental_option</code> 添加 <code>prefs</code> 参数。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">prefs <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'profile.default_content_settings.popups'</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    <span class="token string">'download.default_directory'</span><span class="token punctuation">:</span> <span class="token string">'此处填下载路径'</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">## profile.default_content_settings.popups：0 禁止弹出窗口。</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="一、cookie操作"><a href="#一、cookie操作" class="headerlink" title="一、cookie操作"></a>一、cookie操作</h2><p>使用selenium模拟登陆可以获取网站的cookie<br>|操作|描述|<br>|–|–|<br>|get_cookies|以字典的形式返回当前会话中可见的 cookie 信息|<br>|get_cookie(name)|返回 cookie 字典中 key == name 的 cookie 信息|<br>|add_cookie(cookie_dict)|将 cookie 添加到当前会话中|<br>|delete_cookie(name)|删除指定名称的单个 cookie|<br>|delete_all_cookies()|删除会话范围内的所有 cookie|</p>
+<h2 id="二、无头操作"><a href="#二、无头操作" class="headerlink" title="二、无头操作"></a>二、无头操作</h2><p>需要导入：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>然后进行配置：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 配置</span>
+option <span class="token operator">=</span> Options<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 为Chrome配置无头模式</span>
+option<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">"--headless"</span><span class="token punctuation">)</span>
+<span class="token comment"># 启动浏览器时加入配置</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>options<span class="token operator">=</span>option<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样就可以实现无头模式啦！</p>
 
                 
             </div>
@@ -528,7 +532,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://polaris.github.io/2022/03/01/selenium-xia-zai-wen-jian/">http://polaris.github.io/2022/03/01/selenium-xia-zai-wen-jian/</a>
+                    <a href="http://polaris.github.io/2022/03/04/selenium-guan-yu-cookie-de-cao-zuo-he-wu-tou-mo-shi/">http://polaris.github.io/2022/03/04/selenium-guan-yu-cookie-de-cao-zuo-he-wu-tou-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1004,35 +1008,47 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/03/01/selenium-fan-ping-bi-fang-fa/">
+                <a href="/2022/03/04/selenium-pa-chong-shi-li-yi-wang-yi-yun-ge-dan-feng-mian-tu-pian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【selenium】反屏蔽方法">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="【selenium爬虫实例一】网易云歌单封面图片">
                         
-                        <span class="card-title">【selenium】反屏蔽方法</span>
+                        <span class="card-title">【selenium爬虫实例一】网易云歌单封面图片</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            selenium
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-04
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Polaris119
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/selenium/" class="post-category">
+                                    selenium
+                                </a>
+                            
+                            <a href="/categories/selenium/%E7%88%AC%E8%99%AB/" class="post-category">
+                                    爬虫
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
                     
                     <a href="/tags/selenium/">
                         <span class="chip bg-color">selenium</span>
@@ -1049,33 +1065,29 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/27/selenium-she-zhi-yuan-su-deng-dai/">
+                <a href="/2022/03/01/selenium-biao-dan-qie-huan-yu-dan-chuang-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="【selenium】设置元素等待">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="【selenium】表单切换与弹窗问题">
                         
-                        <span class="card-title">【selenium】设置元素等待</span>
+                        <span class="card-title">【selenium】表单切换与弹窗问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            selenium
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/selenium/" class="post-category">
-                                    selenium
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Polaris119
                             
                         </span>
                     </div>
