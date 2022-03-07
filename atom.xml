@@ -6,7 +6,7 @@
   <link href="http://polaris.github.io/atom.xml" rel="self"/>
   
   <link href="http://polaris.github.io/"/>
-  <updated>2022-03-04T10:46:29.519Z</updated>
+  <updated>2022-03-07T05:58:06.937Z</updated>
   <id>http://polaris.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【python爬虫】一键保存微博评论信息</title>
+    <link href="http://polaris.github.io/2022/03/07/python-pa-chong-yi-jian-bao-cun-wei-bo-ping-lun-xin-xi/"/>
+    <id>http://polaris.github.io/2022/03/07/python-pa-chong-yi-jian-bao-cun-wei-bo-ping-lun-xin-xi/</id>
+    <published>2022-03-07T05:57:14.000Z</published>
+    <updated>2022-03-07T05:58:06.937Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、准备工作&quot;&gt;&lt;a href=&quot;#一、准备工作&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="爬虫" scheme="http://polaris.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+    <category term="爬虫" scheme="http://polaris.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>【selenium爬虫实例一】网易云歌单封面图片</title>

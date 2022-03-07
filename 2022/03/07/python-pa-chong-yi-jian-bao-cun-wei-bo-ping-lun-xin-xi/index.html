@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【selenium】设置元素等待, Polaris119温暖的小窝">
+    <meta name="keywords" content="【python爬虫】一键保存微博评论信息, Polaris119温暖的小窝">
     <meta name="description" content="不定期更新自己的笔记和学习经历">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【selenium】设置元素等待 | Polaris119温暖的小窝</title>
+    <title>【python爬虫】一键保存微博评论信息 | Polaris119温暖的小窝</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【selenium】设置元素等待</h1>
+                    <h1 class="description center-align post-title">【python爬虫】一键保存微博评论信息</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +434,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/selenium/">
-                                <span class="chip bg-color">selenium</span>
+                            <a href="/tags/%E7%88%AC%E8%99%AB/">
+                                <span class="chip bg-color">爬虫</span>
                             </a>
                         
                     </div>
@@ -446,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/selenium/" class="post-category">
-                                selenium
+                            <a href="/categories/%E7%88%AC%E8%99%AB/" class="post-category">
+                                爬虫
                             </a>
                         
                     </div>
@@ -459,21 +459,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-02-27
+                    2022-03-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-02-27
+                    2022-03-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.2k
+                    1.1k
                 </div>
                 
 
@@ -503,172 +503,156 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p><strong>selenium中有三种时间等待：</strong></p>
+                <h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><p>打开微博网址</p>
+<p>进入之后，正常登陆微博账号，然后就可以对<code>评论内容</code>进行抓包处理了。</p>
+<p>进行抓包的时候，可能还有一个小插曲。</p>
+<p>首先，随便选一则内容，点击<code>评论</code>，然后下拉点击<code>查看全部评论</code><br><img src="https://img-blog.csdnimg.cn/a55ed5f6bbbc4099a3a072b29c58c2a9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>紧接着进行抓包，在这个过程，你可能需要进行手机号验证。出现手机号验证的画面，进行验证就可以了。</p>
+<p><img src="https://img-blog.csdnimg.cn/046196b442184497bdb49d3ca07acaa1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="二、思路分析"><a href="#二、思路分析" class="headerlink" title="二、思路分析"></a>二、思路分析</h2><p>通过抓包分析，可以发现列表中，以 <code>buildComments</code>开头的包，里面包含的就是我们需要的评论信息。<br><img src="https://img-blog.csdnimg.cn/d7a3769a1eca4b55a03450c636f92fa6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>哎呀，这不就是之前经常爬取的<code>json</code>数据嘛。</p>
+<p>这就需要构造请求链接了。</p>
+<p>目标链接由以下链接加上一些参数构成：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">https<span class="token punctuation">:</span><span class="token operator">//</span>weibo<span class="token punctuation">.</span>com<span class="token operator">/</span>ajax<span class="token operator">/</span>statuses<span class="token operator">/</span>buildComments<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>参数可以通过点击这里查看。<br><img src="https://img-blog.csdnimg.cn/8ca6a38ca3184ae78f4a1c3348e0db30.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br>比如参数如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flow<span class="token punctuation">:</span> <span class="token number">0</span>
+is_reload<span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token builtin">id</span><span class="token punctuation">:</span> <span class="token builtin">id</span>
+is_show_bulletin<span class="token punctuation">:</span> <span class="token number">2</span>
+is_mix<span class="token punctuation">:</span> <span class="token number">0</span>
+max_id<span class="token punctuation">:</span> max_id
+count<span class="token punctuation">:</span> <span class="token number">20</span>
+uid<span class="token punctuation">:</span> uid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>其中：<code>id</code>和<code>uid</code>需要根据微博内容进行更换的，<code>max_id</code>是通过上一个包获取的，第一个包为0.</strong></p>
+<p>则构成的目标链接为：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">https<span class="token punctuation">:</span><span class="token operator">//</span>weibo<span class="token punctuation">.</span>com<span class="token operator">/</span>ajax<span class="token operator">/</span>statuses<span class="token operator">/</span>buildComments?flow<span class="token operator">=</span><span class="token number">0</span><span class="token operator">&amp;</span>is_reload<span class="token operator">=</span><span class="token number">1</span><span class="token operator">&amp;</span><span class="token builtin">id</span><span class="token operator">=</span><span class="token builtin">id</span><span class="token operator">&amp;</span>is_show_bulletin<span class="token operator">=</span><span class="token number">2</span><span class="token operator">&amp;</span>is_mix<span class="token operator">=</span><span class="token number">0</span><span class="token operator">&amp;</span>max_id<span class="token operator">=</span>max_id<span class="token operator">&amp;</span>count<span class="token operator">=</span><span class="token number">20</span><span class="token operator">&amp;</span>uid<span class="token operator">=</span>uid<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="三、数据获取"><a href="#三、数据获取" class="headerlink" title="三、数据获取"></a>三、数据获取</h2><p><strong>主要部分包括以下几个，具体可见源码：</strong></p>
 <ul>
-<li>强制等待：<code>sleep</code></li>
-<li>隐式等待：<code>implicitly_wait</code></li>
-<li>显示等待：<code>WebDriverWait</code></li>
+<li>根据微博链接得到id和uid</li>
+<li>发起请求，返回json数据</li>
+<li>返回评论信息</li>
+<li>保存评论信息</li>
+<li>设置一个循环，循环爬取</li>
 </ul>
-<p><strong>其中，这三种方法各有优缺点：</strong><br>| 元素等待方式 | 优点 | 缺点|<br>|–|–|–|<br>| sleep | 使用起来最简单，可以选择在程序调试时使用 | 浪费很多的时间，影响效率 |<br>| implicitly_wait | 一旦设置，在WebDriver对象实例整个周期都起到作用 | 不够灵活 |<br>| WebDriverWait | 节省等待时间，执行效率高 | 使用起来，难度较上两个比较高 |</p>
-<h2 id="二、强制等待"><a href="#二、强制等待" class="headerlink" title="二、强制等待"></a>二、强制等待</h2><p>让程序暂停运行一定的时间，等待时间达到要求的时间后继续运行。</p>
-<p>使用前，需要先导入time模块：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>在前面的文章中，已经多次使用过，这里就不做演示了。</strong></p>
-<p>需要注意的是，对于定位不到元素的时候，从耗时方面来讲，<code>隐式等待</code>和<code>强制等待</code>没什么区别。</p>
-<h2 id="三、隐式等待"><a href="#三、隐式等待" class="headerlink" title="三、隐式等待"></a>三、隐式等待</h2><p><code>implicitly_wait()</code>默认参数的单位为秒，默认值为0。</p>
-<p>如果在最大超时时间内找到元素了，会开始执行下一操作，未找到元素，则会抛出<code>NoSuchElementException</code> 异常。</p>
-<p><strong>以百度为例：</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
-<span class="token keyword">import</span> time
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> json
+<span class="token keyword">from</span> fake_useragent <span class="token keyword">import</span> UserAgent
+<span class="token keyword">from</span> pyquery <span class="token keyword">import</span> PyQuery <span class="token keyword">as</span> pq
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
 
-driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment"># 访问百度</span>
-driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://baidu.com'</span><span class="token punctuation">)</span>
-start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment"># 设置最大等待时间为3秒</span>
-driver<span class="token punctuation">.</span>implicitly_wait<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+ua <span class="token operator">=</span> UserAgent<span class="token punctuation">(</span>verify_ssl<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> path<span class="token operator">=</span><span class="token string">'D:/Pycharm/fake_useragent.json'</span><span class="token punctuation">)</span>
 
-<span class="token keyword">try</span><span class="token punctuation">:</span>
-    <span class="token comment"># 使用id定位一个不存在的元素</span>
-    driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'yyds'</span><span class="token punctuation">)</span>
-<span class="token keyword">except</span> Exception <span class="token keyword">as</span> exception<span class="token punctuation">:</span>
-    <span class="token comment"># 打印异常</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>exception<span class="token punctuation">)</span>
-    <span class="token comment"># 打印程序运行时间</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'耗时：</span><span class="token interpolation"><span class="token punctuation">{</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span>start<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
-<span class="token comment"># 关闭所有页面</span>
-driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/099eb95220b1434aa665cda2a8ea1103.gif#pic_center"></p>
-<h2 id="四、显示等待"><a href="#四、显示等待" class="headerlink" title="四、显示等待"></a>四、显示等待</h2><p><strong>需要导入模块：</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>WebDriverWait(driver, timeout, poll_frequency=0.5, ignored_exceptions=None)</p>
+<span class="token comment"># 随机生成请求头</span>
+<span class="token keyword">def</span> <span class="token function">ua_random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    headers <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'use_agent'</span><span class="token punctuation">:</span> ua<span class="token punctuation">.</span>random
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> headers
+
+
+<span class="token comment"># 根据微博链接得到id和uid</span>
+<span class="token keyword">def</span> <span class="token function">get_id_uid</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token builtin">id</span> <span class="token operator">=</span> url<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    uid <span class="token operator">=</span> url<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> <span class="token builtin">id</span><span class="token punctuation">,</span> uid
+
+
+<span class="token comment"># 发起请求，返回json数据</span>
+<span class="token keyword">def</span> <span class="token function">scrap_json</span><span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">,</span> uid<span class="token punctuation">,</span> max_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    url <span class="token operator">=</span> <span class="token string">'https://weibo.com/ajax/statuses/buildComments'</span>
+    params <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'flow'</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token string">'is_reload'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token builtin">id</span><span class="token punctuation">,</span>
+        <span class="token string">'is_show_bulletin'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token string">'is_mix'</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token string">'max_id'</span><span class="token punctuation">:</span> max_id<span class="token punctuation">,</span>
+        <span class="token string">'count'</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+        <span class="token string">'uid'</span><span class="token punctuation">:</span> uid
+    <span class="token punctuation">}</span>
+    response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>ua_random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> params<span class="token operator">=</span>params<span class="token punctuation">)</span><span class="token punctuation">.</span>text
+    datas <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> datas
+
+
+<span class="token comment"># 返回评论信息和下一页的相关参数max_id</span>
+<span class="token keyword">def</span> <span class="token function">scrap_index</span><span class="token punctuation">(</span>datas<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    data <span class="token operator">=</span> datas<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span>
+    max_id <span class="token operator">=</span> datas<span class="token punctuation">[</span><span class="token string">'max_id'</span><span class="token punctuation">]</span>
+    <span class="token comment"># 新建一个列表，用于放每一个完整的评论信息</span>
+    comment <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+        <span class="token comment"># 评论者昵称</span>
+        user_name <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span>
+        <span class="token comment"># 评论者设置的地点</span>
+        user_city <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'location'</span><span class="token punctuation">]</span>
+        <span class="token comment"># 进行判断，该微博是否能够查看ip信息</span>
+        <span class="token keyword">if</span> <span class="token string">'source'</span> <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+            <span class="token comment"># 评论时所在地点</span>
+            user_location <span class="token operator">=</span> pq<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token string">'source'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            user_location <span class="token operator">=</span> <span class="token string">'无法显示'</span>
+        <span class="token comment"># 评论时间</span>
+        user_time <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'created_at'</span><span class="token punctuation">]</span>
+        <span class="token comment"># 评论内容</span>
+        user_content <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'text_raw'</span><span class="token punctuation">]</span>
+        <span class="token comment"># 点赞数</span>
+        user_love <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token string">'like_counts'</span><span class="token punctuation">]</span>
+        <span class="token comment"># 将信息组成一个列表，形成一个完整的评论信息</span>
+        user_data <span class="token operator">=</span> <span class="token punctuation">[</span>user_name<span class="token punctuation">,</span> user_city<span class="token punctuation">,</span> user_location<span class="token punctuation">,</span> user_time<span class="token punctuation">,</span> user_content<span class="token punctuation">,</span> user_love<span class="token punctuation">]</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'正在保存</span><span class="token interpolation"><span class="token punctuation">{</span>user_name<span class="token punctuation">}</span></span><span class="token string">的评论信息'</span></span><span class="token punctuation">)</span>
+        <span class="token comment"># 将每一个完整的评论信息添加到总列表</span>
+        comment<span class="token punctuation">.</span>append<span class="token punctuation">(</span>user_data<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> comment<span class="token punctuation">,</span> max_id
+
+
+<span class="token comment"># 保存评论信息</span>
+<span class="token keyword">def</span> <span class="token function">save_data</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> filename<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dataframe <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    dataframe<span class="token punctuation">.</span>to_csv<span class="token punctuation">(</span>path<span class="token operator">+</span>filename<span class="token operator">+</span><span class="token string">'.csv'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf_8_sig'</span><span class="token punctuation">,</span> mode<span class="token operator">=</span><span class="token string">'a'</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">','</span><span class="token punctuation">,</span> header<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 创建保存文件的路径</span>
+    path <span class="token operator">=</span> <span class="token string">'D:/微博评论/'</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+    <span class="token comment"># 文件名</span>
+    filename <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入文件名："</span><span class="token punctuation">)</span>
+    <span class="token comment"># 写入文件列名</span>
+    csv_header <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'评论者昵称'</span><span class="token punctuation">,</span> <span class="token string">'评论者所在城市'</span><span class="token punctuation">,</span> <span class="token string">'评论时的ip城市'</span><span class="token punctuation">,</span> <span class="token string">'评论时间'</span><span class="token punctuation">,</span> <span class="token string">'评论内容'</span><span class="token punctuation">,</span> <span class="token string">'评论的点赞数'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    save_data<span class="token punctuation">(</span>path<span class="token punctuation">,</span> filename<span class="token punctuation">,</span> csv_header<span class="token punctuation">)</span>
+
+    <span class="token comment"># 获取微博id和微博用户id</span>
+    url <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">'请将需要爬取的微博链接粘贴至此：'</span><span class="token punctuation">)</span>
+    <span class="token builtin">id</span><span class="token punctuation">,</span> uid <span class="token operator">=</span> get_id_uid<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+
+    max_id <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment"># 开始循环，不断获取评论信息</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        data_json <span class="token operator">=</span> scrap_json<span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">,</span> uid<span class="token punctuation">,</span> max_id<span class="token punctuation">)</span>
+        comment<span class="token punctuation">,</span> max_id <span class="token operator">=</span> scrap_index<span class="token punctuation">(</span>data_json<span class="token punctuation">)</span>
+        <span class="token comment"># 保存评论信息</span>
+        save_data<span class="token punctuation">(</span>path<span class="token punctuation">,</span> filename<span class="token punctuation">,</span> comment<span class="token punctuation">)</span>
+        <span class="token comment"># 终止循环的条件，最后一个包得到的max_id是0</span>
+        <span class="token keyword">if</span> max_id <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
-<li><code>driver</code>: 传入WebDriver实例；</li>
-<li><code>timeout</code>：指最大超时时间，默认单位为秒；</li>
-<li><code>poll_frequency</code>：调用until或until_not方法，每隔一定时间不断尝试是否能找到页面元素，默认间隔是0.5s,可自行调整间隔时间。</li>
-<li><code>ignored_exceptions</code>：超时后的异常信息，默认情况下NoSuchElementException 异常。</li>
+<li><strong>对于fake_useragent不理解的小伙伴，可以参考</strong>：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44921056/article/details/119510170">Python爬虫有用的库：fake_useragent，自动生成请求头</a><h2 id="四、结果展示"><a href="#四、结果展示" class="headerlink" title="四、结果展示"></a>四、结果展示</h2><img src="https://img-blog.csdnimg.cn/dd70ed52c0904d53b81809815f26a105.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><br><img src="https://img-blog.csdnimg.cn/9f546a0281c346e68cabc11ab2099fa1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-c5pa555qE5pif,size_20,color_FFFFFF,t_70,g_se,x_16"><h2 id="五、说明"><a href="#五、说明" class="headerlink" title="五、说明"></a>五、说明</h2></li>
+<li><strong>本文仅用于交流学习</strong></li>
+<li>不建议抓取太多数据，容易对服务器造成负载，浅尝辄止即可。</li>
+<li>本文利用 Python 爬虫一键保存微博评论，实现过程中也会遇到一些问题，多思考和调试，最终解决问题，也能理解得更深刻。</li>
+<li>代码可直接复制运行，如果觉得还不错，记得给个赞哦，也是对作者最大的鼓励，不足之处可以在评论区多多指正。</li>
+<li>本文并没有爬取对评论的回复内容，即“楼中楼”信息没有爬取</li>
 </ul>
-<p>WebDriverWait一般和<code>until()</code>和<code>until_not()</code>配合使用：</p>
-<ul>
-<li><code>until()</code> 当某元素出现 或 某条件成立则继续执行</li>
-<li><code>until_not</code> 当某元素消失 或 某条件不成立则继续执</li>
-</ul>
-<p><code>until</code>或<code>until_not</code>中的<code>method参数</code>一定要是可以调用的对象，我们可以用selenium提供的<code>expected_conditions</code>，提供一些场景的判断。</p>
-<p>但使用<code>expected_conditions</code>，需先导入：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support <span class="token keyword">import</span> expected_conditions <span class="token keyword">as</span> EC<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>常用的<code>expected_conditions</code>方法如下：</strong></p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>title_is</td>
-<td>判断当前页面的 title 是否完全等于（==）预期字符串</td>
-</tr>
-<tr>
-<td>title_contains</td>
-<td>判断当前页面的 title 是否包含预期字符串</td>
-</tr>
-<tr>
-<td>presence_of_element_located</td>
-<td>判断某个元素是否被加到了 dom 树里，并不代表该元素一定可见</td>
-</tr>
-<tr>
-<td>visibility_of_element_located</td>
-<td>判断元素是否可见（可见代表元素非隐藏，并且元素宽和高都不等于 0）</td>
-</tr>
-<tr>
-<td>visibility_of</td>
-<td>作用和上一个方法类似，但传入参数是定位的元素，即element</td>
-</tr>
-<tr>
-<td>presence_of_all_elements_located</td>
-<td>判断是否至少有 1 个元素存在于 dom 树中。举例：如果页面上有 n 个元素的 class 都是’qw’，那么只要有 1 个元素存在，这个方法就返回 True</td>
-</tr>
-<tr>
-<td>text_to_be_present_in_element</td>
-<td>判断某个元素中的 text 是否包含了预期的字符串</td>
-</tr>
-<tr>
-<td>text_to_be_present_in_element_value</td>
-<td>判断某个元素中的 value 属性是否包含了预期的字符串</td>
-</tr>
-<tr>
-<td>frame_to_be_available_and_switch_to_it</td>
-<td>判断该 frame 是否可以 switch进去，如果可以的话，返回 True 并且 switch 进去，否则返回 False</td>
-</tr>
-<tr>
-<td>invisibility_of_element_located</td>
-<td>判断某个元素中是否不存在于dom树或不可见</td>
-</tr>
-<tr>
-<td>element_to_be_clickable</td>
-<td>判断某个元素中是否可见并且可点击</td>
-</tr>
-<tr>
-<td>staleness_of</td>
-<td>等某个元素从 dom 树中移除，注意，这个方法也是返回 True或 False</td>
-</tr>
-<tr>
-<td>element_to_be_selected</td>
-<td>判断某个元素是否被选中了,一般用在下拉列表</td>
-</tr>
-<tr>
-<td>element_selection_state_to_be</td>
-<td>判断某个元素的选中状态是否符合预期</td>
-</tr>
-<tr>
-<td>element_located_selection_state_to_be</td>
-<td>跟上面的方法作用一样，只是上面的方法传入定位到的 element，而这个方法传入 locator</td>
-</tr>
-<tr>
-<td>alert_is_present</td>
-<td>判断页面上是否存在 alert</td>
-</tr>
-</tbody></table>
-<p><strong>以百度为例：</strong></p>
-<ul>
-<li>定位一个存在的元素：</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support <span class="token keyword">import</span> expected_conditions <span class="token keyword">as</span> EC
-
-driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment"># 访问百度</span>
-driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.baidu.com'</span><span class="token punctuation">)</span>
-<span class="token comment"># 设置显式等待，超时时长最大为5s，每隔1s查找元素一次</span>
-<span class="token comment"># 根据id定位到元素位置</span>
-element <span class="token operator">=</span> WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>
-    EC<span class="token punctuation">.</span>presence_of_element_located<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token string">'kw'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment"># 在定位到的地方，输入CSDN</span>
-element<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'CSDN'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/d0e0cce747884a0f97ad6ea38c58ee46.gif#pic_center"></p>
-<ul>
-<li>定位一个不存在的元素</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support <span class="token keyword">import</span> expected_conditions <span class="token keyword">as</span> EC
-
-driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment"># 访问百度</span>
-driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.baidu.com'</span><span class="token punctuation">)</span>
-<span class="token comment"># 设置显式等待，超时时长最大为5s，每隔1s查找元素一次</span>
-<span class="token comment"># 根据id定位到元素位置</span>
-element <span class="token operator">=</span> WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>
-    EC<span class="token punctuation">.</span>presence_of_element_located<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'csdn'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> message<span class="token operator">=</span><span class="token string">'超时了哟。。。'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>得到提示：</strong></p>
-<blockquote>
-<p>selenium.common.exceptions.TimeoutException: Message: 超时了哟。。。</p>
-</blockquote>
-<h2 id="五、参考文章"><a href="#五、参考文章" class="headerlink" title="五、参考文章"></a>五、参考文章</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1539124">Selenium自动化测试-设置元素等待</a></p>
 
                 
             </div>
@@ -695,7 +679,7 @@ element <span class="token operator">=</span> WebDriverWait<span class="token pu
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://polaris.github.io/2022/02/27/selenium-she-zhi-yuan-su-deng-dai/">http://polaris.github.io/2022/02/27/selenium-she-zhi-yuan-su-deng-dai/</a>
+                    <a href="http://polaris.github.io/2022/03/07/python-pa-chong-yi-jian-bao-cun-wei-bo-ping-lun-xin-xi/">http://polaris.github.io/2022/03/07/python-pa-chong-yi-jian-bao-cun-wei-bo-ping-lun-xin-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -733,8 +717,8 @@ element <span class="token operator">=</span> WebDriverWait<span class="token pu
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/selenium/">
-                                    <span class="chip bg-color">selenium</span>
+                                <a href="/tags/%E7%88%AC%E8%99%AB/">
+                                    <span class="chip bg-color">爬虫</span>
                                 </a>
                             
                         </div>
@@ -1167,42 +1151,48 @@ element <span class="token operator">=</span> WebDriverWait<span class="token pu
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/03/01/selenium-xia-zai-wen-jian/">
+                <a href="/2022/03/07/python-pa-chong-yi-jian-bao-cun-wei-bo-ping-lun-xin-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="【selenium】下载文件]">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="【python爬虫】一键保存微博评论信息">
                         
-                        <span class="card-title">【selenium】下载文件]</span>
+                        <span class="card-title">【python爬虫】一键保存微博评论信息</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            selenium
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-07
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Polaris119
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%88%AC%E8%99%AB/" class="post-category">
+                                    爬虫
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/selenium/">
-                        <span class="chip bg-color">selenium</span>
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
                     </a>
                     
                 </div>
@@ -1216,13 +1206,13 @@ element <span class="token operator">=</span> WebDriverWait<span class="token pu
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/27/selenium-shu-biao-kong-zhi-he-jian-pan-kong-zhi/">
+                <a href="/2022/03/04/selenium-pa-chong-shi-li-yi-wang-yi-yun-ge-dan-feng-mian-tu-pian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="【selenium】鼠标控制和键盘控制">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="【selenium爬虫实例一】网易云歌单封面图片">
                         
-                        <span class="card-title">【selenium】鼠标控制和键盘控制</span>
+                        <span class="card-title">【selenium爬虫实例一】网易云歌单封面图片</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1233,7 +1223,7 @@ element <span class="token operator">=</span> WebDriverWait<span class="token pu
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-04
                             </span>
                         <span class="publish-author">
                             
@@ -1243,12 +1233,20 @@ element <span class="token operator">=</span> WebDriverWait<span class="token pu
                                     selenium
                                 </a>
                             
+                            <a href="/categories/selenium/%E7%88%AC%E8%99%AB/" class="post-category">
+                                    爬虫
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
                     
                     <a href="/tags/selenium/">
                         <span class="chip bg-color">selenium</span>
